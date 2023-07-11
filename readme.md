@@ -14,11 +14,11 @@ x-amz-meta-results_frpa_attachment_id: (which represents the primary key in the 
 
  set all the parameters for the database connection and the objectstore
 '''
-* set PYTHON_CONNECTSTRING=<server/servicename>
-* set PYTHON_PASSWORD=<oracle password>
-* set PYTHON_USERNAME=<oracle username>
-* set OBJ_STOR_ID=<s3 bucket id/username>
-* set OBJ_STOR_KEY=<s3 bucket key>
+* set PYTHON_CONNECTSTRING=the server/servicename>
+* set PYTHON_PASSWORD=the oracle password
+* set PYTHON_USERNAME=the oracle username
+* set OBJ_STOR_ID=the s3 bucket id/username
+* set OBJ_STOR_KEY=the s3 bucket key
 '''
 * endpoint_url='https://nrs.objectstore.gov.bc.ca:443/' # endpoint for S3 Object Storage -- if this isn't specified it will try and go to Amazon S3
-* bucketname = '<bucket name>'
+* bucketname = the bucket name
