@@ -3,9 +3,22 @@ import boto3
 import oracledb
 import os
 
-# set all the parameters for the database connection and the objectstore
-'''
-set PYTHON_CONNECTSTRING=<server/servicename>
+''' ## Description
+This python script pulls lobs out of oracle and puts them into Object Storage S3. 
+If the object already exists it will be overwritten. One metadata tag is added - 
+x-amz-meta-results_frpa_attachment_id: (which represents the primary key in the oracle database)
+
+This example is specific to the LOBS in this table - THE.RESULTS_FRPA_ATTACH_CONTENT (which needed to be joined to THE.RESULTS_FRPA_ATTACHMENT to get the metadata about the lob)
+exampel run at prompt (tested with python (3.10.0), boto3 (1.28.2), and oracledb (1.3.2)
+ run: python lob2obj.py
+
+## required libraries
+* python -m pip install boto3
+* python -m pip install oracledb
+
+## required env parameters to set
+# set all the env parameters for the database connection and the objectstore
+set PYTHON_CONNECTSTRING=<oracle server/servicename>
 set PYTHON_PASSWORD=<oracle password>
 set PYTHON_USERNAME=<oracle username>
 set OBJ_STOR_ID=<s3 bucket id/username>
@@ -15,13 +28,13 @@ endpoint_url='https://nrs.objectstore.gov.bc.ca:443/' # endpoint for S3 Object S
 bucketname = '<bucket name>'
 
 un = os.environ.get('PYTHON_USERNAME')
-print(un)
 pw = os.environ.get('PYTHON_PASSWORD')
 cs = os.environ.get('PYTHON_CONNECTSTRING')
-print(cs)
 objid = os.environ.get('OBJ_STOR_ID')
 objkey = os.environ.get('OBJ_STOR_KEY')
 
+print(cs)
+print(un)
 #Creating Session With Boto3 for Object Storage
 session = boto3.Session(
 aws_access_key_id=objid,
